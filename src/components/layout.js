@@ -1,16 +1,10 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
-import { Helmet } from 'react-helmet';
+import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
+import Archive from "./archive"
 import "./layout.css"
 
 const Layout = ({ children }) => {
@@ -31,13 +25,13 @@ const Layout = ({ children }) => {
         title={data.site.siteMetadata.title}
         meta={[
           {
-            name: 'description',
-            content: data.site.siteMetadata.description 
+            name: "description",
+            content: data.site.siteMetadata.description,
           },
-          { name: 'keywords', content: 'sample, something' },
+          { name: "keywords", content: "sample, something" },
         ]}
       >
-        <html lang='en' />
+        <html lang="en" />
       </Helmet>
       <Header siteTitle={data.site.siteMetadata.title} />
       <div
@@ -49,6 +43,7 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
+        <Archive />
         <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
