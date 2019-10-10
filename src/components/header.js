@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
 
-import gatsbyLogo from "../images/gatsby-icon.png"
+import Logo from "../images/logo.png"
 
 const HeaderWrapper = styled.div`
   background: #524763;
@@ -16,7 +16,7 @@ const HeaderWrapper = styled.div`
 const HeaderContainer = styled.div`
   margin: 0 auto;
   max-width: 960;
-  padding: 1rem;
+  padding: 0.3rem;
 `
 
 const Header = ({ siteTitle }) => (
@@ -34,8 +34,8 @@ const Header = ({ siteTitle }) => (
             style={{
               width: "100px",
             }}
-            src={gatsbyLogo}
-            alt="GatsbyLogo"
+            src={Logo}
+            alt="Logo"
           />
         </Link>
       </h1>
