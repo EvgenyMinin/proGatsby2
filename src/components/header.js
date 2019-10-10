@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
 
-import Logo from "../images/logo.png"
+import logo from "../images/logo.svg"
 
 const HeaderWrapper = styled.div`
   background: #524763;
@@ -34,8 +34,8 @@ const Header = ({ siteTitle }) => (
             style={{
               width: "100px",
             }}
-            src={Logo}
-            alt="Logo"
+            src={logo}
+            alt="logo"
           />
         </Link>
       </h1>
