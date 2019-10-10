@@ -1,28 +1,39 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 
-const Archive = () => {
-  const data = useStaticQuery(graphql`
-    query blogPostArchive {
-      allMarkdownRemark {
-        edges {
-          node {
-            frontmatter {
-              title
-              slug
-            }
+const POST_ARCHIVE_QUERY = graphql`
+  query blogPostArchive {
+    allMarkdownRemark(
+      limit: 5
+      sort: { order: DESC, fields: [frontmatter___date] }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            slug
           }
         }
       }
     }
-  `)
+  }
+`
+
+const Archive = () => {
+  const data = useStaticQuery(POST_ARCHIVE_QUERY)
   return (
     <>
       <aside>
         <h3>Archive</h3>
-        {data.allMarkdownRemark.edges.map(edge => (
-          <li>{edge.node.frontmatter.title}</li>
-        ))}
+        <ul>
+          {data.allMarkdownRemark.edges.map(edge => (
+            <li key={edge.node.frontmatter.slug}>
+              <Link to={`/posts${edge.node.frontmatter.slug}`}>
+                {edge.node.frontmatter.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </aside>
     </>
   )
